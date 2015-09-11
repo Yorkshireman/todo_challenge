@@ -14,9 +14,14 @@
   <body ng-controller="toDoListController as tdCtrl">
     <section>
       <form>
-    	 <input type="text" id="task_input_box">
-       <button id="task_submit" ng-click="toDoListController.addTask()">Submit</button>
+    	 <input type="text" id="task_input_box" ng-model="tdCtrl.task">
+       <button id="task_submit" ng-click="tdCtrl.addTask()">Submit</button>
       </form>
   	</section>
+    <ul id="task_list">
+      <li ng-repeat="task in tdCtrl.tasks">
+        {{ task }}
+      </li>
+    </ul>
   </body>
 </html>
