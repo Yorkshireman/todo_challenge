@@ -12,8 +12,11 @@
   </head>
 
   <body ng-controller="toDoListController as tdCtrl">
-  	<section>
-  	To do goes here. Right here.
+    <section>
+      <form>
+    	 <input type="text" id="task_input_box">
+       <button id="task_submit" ng-click="toDoListController.addTask()">Submit</button>
+      </form>
   	</section>
   </body>
 </html>
