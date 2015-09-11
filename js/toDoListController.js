@@ -5,7 +5,6 @@ toDoList.controller("toDoListController", [function() {
 
   self.addTask = function() {
     self.tasks.push(self.task);
-    console.log(self.tasks);
   };
 
 }]);
