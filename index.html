@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>ToDo List</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="mycss/bootstrap_overrides.css">
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
@@ -13,14 +14,22 @@
 
   <body ng-controller="toDoListController">
     <section>
+      <h4>Add Task</h4>
       <form>
     	 <input type="text" ng-model="task">
        <button id="task_submit" ng-click="addTask()">Add</button>
       </form>
+      <form id='edit-task-form'>
+        <h4>Edit Task</h4>
+        <input id='edit-task-text-box' type="text">
+        <button ng-click="updateTask">Update</button>
+      </form>
   	</section>
     <ul id="task_list">
       <li ng-repeat="task in tasks">
-        {{ task }} <button id="task_delete" ng-click="deleteTask(task)">Delete</button>
+        {{ task }} 
+        <button id="task_delete" ng-click="deleteTask(task)">Delete</button>
+        <button id="task_edit" ng-click="editTask(task)">Edit</button>
       </li>
     </ul>
   </body>
