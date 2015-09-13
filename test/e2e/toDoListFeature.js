@@ -34,6 +34,13 @@ describe('toDoList', function() {
     expect(editTaskForm.isDisplayed()).toBe(false);
   });
 
+  describe('when editing a task', function() {
+    it('edit task form is visible', function() {
+      editTaskButton.click();
+      expect(editTaskForm.isDisplayed()).toBe(true);
+    });
+  });
+
   // it('when editing a task, the edit task box is pre-populated', function() {
   //   editTaskButton.click();
   //   expect(editTaskBox.getText()).toEqual('First Task');
