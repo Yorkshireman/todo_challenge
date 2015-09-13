@@ -1,15 +1,16 @@
 describe('toDoList', function() {
 
-  var taskBox = element(by.model('task'));
-  var taskList = element(by.css('#task_list'));
+  var taskBox =           element(by.model('task'));
+  var taskList =          element(by.css('#task_list'));
 
-  var addTaskButton = element(by.css('#task_submit'));
+  var addTaskButton =     element(by.css('#task_submit'));
 
-  var deleteTaskButton = element(by.css('#task_delete'));
+  var deleteTaskButton =  element(by.css('#task_delete'));
 
-  var editTaskButton = element(by.css('#task_edit'));
-  var editTaskForm = element(by.css('#edit-task-form'));
-  var editTaskBox = element(by.css('edit-task-text-box'));
+  var editTaskButton =    element(by.css('#task_edit'));
+  var editTaskForm =      element(by.css('#edit-task-form'));
+  var editTaskBox =       element(by.css('#edit-task-text-box'));
+  var updateTaskButton =  element(by.css('#update-task-button'));
 
   beforeEach(function() {
     browser.get('http://localhost:8080');
@@ -43,6 +44,23 @@ describe('toDoList', function() {
 
   // it('when editing a task, the edit task box is pre-populated', function() {
   //   editTaskButton.click();
-  //   expect(editTaskBox.getText()).toEqual('First Task');
+  //   expect(element(by.css('#edit-task-text-box')).getText()).toContain('First Task');
   // });
+
+    it('the task is properly updated', function() {
+      editTaskButton.click();
+      editTaskBox.clear();
+      editTaskBox.sendKeys("Edited Task");
+      updateTaskButton.click();
+      expect(taskList.getText()).toContain("Edited Task");
+      expect(taskList.getText()).not.toContain("First Task");
+    });
+
+    it('edit form disappears after clicking update', function() {
+      editTaskButton.click();
+      editTaskBox.clear();
+      editTaskBox.sendKeys("Edited Task");
+      updateTaskButton.click();
+      expect(editTaskForm.isDisplayed()).toBe(false);
+    }); 
 });

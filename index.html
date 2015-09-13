@@ -25,10 +25,12 @@
     <ul id="task_list">
       <li ng-repeat="task in tasks">
         {{ task }} 
-              <form id='edit-task-form' ng-show="showMe">
-        <input id='edit-task-text-box' type="text">
-        <button ng-click="updateTask">Update</button>
-      </form>
+
+        <form id='edit-task-form' ng-show="showMe">
+          <input id='edit-task-text-box' ng-model="task" type="text" value="{{task}}">
+          <button id='update-task-button' ng-click="updateTask; showMe=false">Update</button>
+        </form>
+
         <button id="task_delete" ng-click="deleteTask(task)">Delete</button>
         <button id="task_edit" ng-click="editTask(task); showMe=true">Edit</button>
       </li>
