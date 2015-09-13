@@ -1,10 +1,9 @@
-toDoList.controller("toDoListController", [function() {
-  var self = this;
+toDoList.controller("toDoListController", function($scope) {
 
-  self.tasks = [];
+  $scope.tasks = [];
 
-  self.addTask = function() {
-    self.tasks.push(self.task);
+  $scope.addTask = function() {
+    $scope.tasks.push($scope.task);
   };
 
-}]);
+});

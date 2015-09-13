@@ -1,8 +1,8 @@
 describe('toDoList', function() {
 
-  var taskBox = findElement(By.css('#task_input_box'));
-  var taskList = findElement(By.css('#task_list'));
-  var submitTaskButton = findElement(By.css('#task_submit'));
+  var taskBox = element(by.css('#task_input_box'));
+  var taskList = element(by.css('#task_list'));
+  var submitTaskButton = element(by.css('#task_submit'));
 
   beforeEach(function() {
     browser.get('http://localhost:8080');
