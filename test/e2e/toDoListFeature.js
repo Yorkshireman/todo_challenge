@@ -31,7 +31,7 @@ describe('toDoList', function() {
     expect(taskList.getText()).not.toContain('First Task');
   });
 
-  it('before editing a task, the edit task box is hidden', function() {
+  it('before editing a task, the edit task form is hidden', function() {
     expect(editTaskForm.isDisplayed()).toBe(false);
   });
 
@@ -42,26 +42,21 @@ describe('toDoList', function() {
     });
   });
 
-  // it('when editing a task, the edit task box is pre-populated', function() {
-  //   editTaskButton.click();
-  //   expect(editTaskForm.getText()).toContain('First Task');
-  // });
-
-    describe('after editing a task', function() {
-      beforeEach(function() {
-        editTaskButton.click();
-        editTaskBox.clear();
-        editTaskBox.sendKeys("Edited Task");
-        updateTaskButton.click();
-      });
-
-      it('the task is properly updated', function() {
-        expect(taskList.getText()).toContain("Edited Task");
-        expect(taskList.getText()).not.toContain("First Task");
-      });
-
-      it('edit form disappears after clicking update', function() {
-        expect(editTaskForm.isDisplayed()).toBe(false);
-      });
+  describe('after editing a task', function() {
+    beforeEach(function() {
+      editTaskButton.click();
+      editTaskBox.clear();
+      editTaskBox.sendKeys("Edited Task");
+      updateTaskButton.click();
     });
+
+    it('the task is properly updated', function() {
+      expect(taskList.getText()).toContain("Edited Task");
+      expect(taskList.getText()).not.toContain("First Task");
+    });
+
+    it('the edit form disappears', function() {
+      expect(editTaskForm.isDisplayed()).toBe(false);
+    });
+  });
 });
