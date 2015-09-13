@@ -44,23 +44,24 @@ describe('toDoList', function() {
 
   // it('when editing a task, the edit task box is pre-populated', function() {
   //   editTaskButton.click();
-  //   expect(element(by.css('#edit-task-text-box')).getText()).toContain('First Task');
+  //   expect(editTaskForm.getText()).toContain('First Task');
   // });
 
-    it('the task is properly updated', function() {
-      editTaskButton.click();
-      editTaskBox.clear();
-      editTaskBox.sendKeys("Edited Task");
-      updateTaskButton.click();
-      expect(taskList.getText()).toContain("Edited Task");
-      expect(taskList.getText()).not.toContain("First Task");
-    });
+    describe('after editing a task', function() {
+      beforeEach(function() {
+        editTaskButton.click();
+        editTaskBox.clear();
+        editTaskBox.sendKeys("Edited Task");
+        updateTaskButton.click();
+      });
 
-    it('edit form disappears after clicking update', function() {
-      editTaskButton.click();
-      editTaskBox.clear();
-      editTaskBox.sendKeys("Edited Task");
-      updateTaskButton.click();
-      expect(editTaskForm.isDisplayed()).toBe(false);
-    }); 
+      it('the task is properly updated', function() {
+        expect(taskList.getText()).toContain("Edited Task");
+        expect(taskList.getText()).not.toContain("First Task");
+      });
+
+      it('edit form disappears after clicking update', function() {
+        expect(editTaskForm.isDisplayed()).toBe(false);
+      });
+    });
 });
