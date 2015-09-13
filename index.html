@@ -14,13 +14,13 @@
   <body ng-controller="toDoListController">
     <section>
       <form>
-    	 <input type="text" id="task_input_box" ng-model="task">
-       <button id="task_submit" ng-click="addTask()">Submit</button>
+    	 <input type="text" ng-model="task">
+       <button id="task_submit" ng-click="addTask()">Add</button>
       </form>
   	</section>
     <ul id="task_list">
       <li ng-repeat="task in tasks">
-        {{ task }}
+        {{ task }} <button id="task_delete" ng-click="deleteTask(task)">Delete</button>
       </li>
     </ul>
   </body>

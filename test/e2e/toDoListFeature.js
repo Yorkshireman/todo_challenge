@@ -1,8 +1,9 @@
 describe('toDoList', function() {
 
-  var taskBox = element(by.css('#task_input_box'));
+  var taskBox = element(by.model('task'));
   var taskList = element(by.css('#task_list'));
-  var submitTaskButton = element(by.css('#task_submit'));
+  var addTaskButton = element(by.css('#task_submit'));
+  var deleteTaskButton = element(by.css('#task_delete'));
 
   beforeEach(function() {
     browser.get('http://localhost:8080');
@@ -14,8 +15,16 @@ describe('toDoList', function() {
 
   it('displays created tasks', function() {
     taskBox.sendKeys("First Task");
-    submitTaskButton.click();
+    addTaskButton.click();
 
-    expect(taskList.getText()).toEqual('First Task');
+    expect(taskList.getText()).toContain('First Task');
+  });
+
+  it('can delete a task', function() {
+    taskBox.sendKeys("First Task");
+    addTaskButton.click();
+    deleteTaskButton.click();
+
+    expect(taskList.getText()).not.toContain('First Task');
   });
 });
