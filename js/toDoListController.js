@@ -1,17 +1,31 @@
-toDoList.controller("toDoListController", function($scope) {
+toDoList.factory('Tasks', function(){
+  var tasks = [];
 
-  $scope.tasks = [];
+  return {
+    get: function() {
+      return tasks;
+    },
 
-  $scope.addTask = function() {
-    $scope.tasks.push($scope.task);
-  };
-  
-  $scope.deleteTask = function(task) {
-    var index = $scope.tasks.indexOf(task);
+    add: function(task) {
+      // console.log(task);
+      tasks.push(task);
+      console.log(tasks);
+    },
+
+    delete: function(task) {
+      var index = tasks.indexOf(task);
     
-    if (index > -1) {
-      $scope.tasks.splice(index, 1);
+      if (index > -1) {
+        tasks.splice(index, 1);
+      }    
     }
   };
-
 });
+
+toDoList.controller("toDoListController", ['Tasks', '$scope', function(Tasks, $scope) {
+  $scope.tasks = Tasks.get();
+
+  $scope.addTask = Tasks.add;
+  
+  $scope.deleteTask = Tasks.delete;
+}]);
