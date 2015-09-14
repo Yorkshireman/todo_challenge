@@ -7,9 +7,7 @@ toDoList.factory('Tasks', function(){
     },
 
     add: function(task) {
-      // console.log(task);
       tasks.push(task);
-      console.log(tasks);
     },
 
     delete: function(task) {
